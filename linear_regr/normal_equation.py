@@ -3,10 +3,10 @@ import numpy as np
 
 def normal_equation(x, y):
     """
-    Returns the vector of weights which fits the line best
-    :param x: parameters of given data
-    :param y: labels
-    :return: vector of weights - omega
+    Returns the vector of weights which fits the hyperplane best
+    :param x: parameters of given data (m x n)
+    :param y: labels (m x 1)
+    :return: vector of weights - theta (n x 1)
     """
     # checking if given data is numpy ndarray
     if type(x) is not np.ndarray:
@@ -17,5 +17,5 @@ def normal_equation(x, y):
     x_biased = np.c_[np.ones((len(x), 1)), x]
     # transposing x_biased once to use in normal equation
     x_transposed = x_biased.T
-    omega = np.linalg.inv(x_transposed.dot(x_biased)).dot(x_transposed.dot(y))
-    return omega
+    theta = np.linalg.inv(x_transposed.dot(x_biased)).dot(x_transposed.dot(y))
+    return theta
