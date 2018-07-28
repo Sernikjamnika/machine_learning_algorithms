@@ -10,12 +10,9 @@ def count_new_pointers(pointers):
 def polynomial_features(data, degree=2):
     # new matrix with added combinations of variables
     if degree >= 2:
-        # checking if good types where given
         # float64 is used not to exceed limits so easily
         # object type would not exceed but is slower than float
-        if type(data) is not np.ndarray:
-            data = np.array(data, dtype=np.float64)
-        elif data.dtype is not np.dtype('float64'):
+        if data.dtype is not np.dtype('float64'):
             data = data.astype('float64')
         # number of dimensions is the length of row
         dimensions = np.size(data, axis=1)
